@@ -13,14 +13,17 @@ import { SvgIcon, Card, CardHeader, Box } from '@mui/material';
 import checkmarkCircleFill from '@iconify/icons-eva/checkmark-circle-2-fill';
 import alertCircleFill from '@iconify/icons-eva/alert-circle-fill';
 
-function createData(endpoint, healthStatus, lastChecked) {
-  return { endpoint, healthStatus, lastChecked };
+function createData(endpoint, status, response, statusCode, expectedStatusCode) {
+  return { endpoint, status, response, statusCode, expectedStatusCode };
 }
 
 const rows = [
-  createData('http://google.com', true, '29th Sept. 5:00 PM'),
-  createData('http://youtube.com', false, '29th Sept. 5:30 PM'),
-  createData('http://facebook.com', true, '29th Sept. 5:30 PM')
+  // Status
+  // true = Running
+  // false = Error
+  createData('http://google.com', true, 'some response string', 201, 201),
+  createData('http://youtube.com', false, 'some response string', 500, 201),
+  createData('http://facebook.com', true, 'some response string', 200, 200)
 ];
 
 export default function Endpoints() {
@@ -33,8 +36,10 @@ export default function Endpoints() {
             <TableHead>
               <TableRow>
                 <TableCell>Endpoint</TableCell>
-                <TableCell align="right">Health Status</TableCell>
-                <TableCell align="right">Last Checked</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell align="right">Response</TableCell>
+                <TableCell align="right">Status Code</TableCell>
+                <TableCell align="right">Expected Status Code</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -47,7 +52,7 @@ export default function Endpoints() {
                     {row.endpoint}
                   </TableCell>
                   <TableCell align="right">
-                    {row.healthStatus ? (
+                    {row.status ? (
                       <SvgIcon sx={{ color: 'green' }}>
                         <Icon icon={checkmarkCircleFill} width={24} height={24} />
                       </SvgIcon>
@@ -57,7 +62,9 @@ export default function Endpoints() {
                       </SvgIcon>
                     )}
                   </TableCell>
-                  <TableCell align="right">{row.lastChecked}</TableCell>
+                  <TableCell align="right">{row.response}</TableCell>
+                  <TableCell align="right">{row.statusCode}</TableCell>
+                  <TableCell align="right">{row.expectedStatusCode}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

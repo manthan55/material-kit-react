@@ -14,7 +14,9 @@ export default function ApplicationHealthCheck() {
           <Typography variant="h4">Application Health Check</Typography>
         </Box>
         <Grid container spacing={3}>
-          <Endpoints />
+          <Grid item xs={12} md={6} lg={8}>
+            <Endpoints />
+          </Grid>
         </Grid>
       </Container>
     </Page>
