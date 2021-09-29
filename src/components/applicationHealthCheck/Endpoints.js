@@ -36,7 +36,7 @@ export default function Endpoints() {
             <TableHead>
               <TableRow>
                 <TableCell>Endpoint</TableCell>
-                <TableCell>Status</TableCell>
+                <TableCell align="center">Status</TableCell>
                 <TableCell align="right">Response</TableCell>
                 <TableCell align="right">Status Code</TableCell>
                 <TableCell align="right">Expected Status Code</TableCell>
@@ -51,7 +51,7 @@ export default function Endpoints() {
                   <TableCell component="th" scope="row">
                     {row.endpoint}
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">
                     {row.status ? (
                       <SvgIcon sx={{ color: 'green' }}>
                         <Icon icon={checkmarkCircleFill} width={24} height={24} />
