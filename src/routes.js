@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Products';
 import Blog from './pages/Blog';
+import ApplicationHealthCheck from './pages/ApplicationHealthCheck';
 import User from './pages/User';
 import NotFound from './pages/Page404';
 
@@ -23,7 +24,8 @@ export default function Router() {
         { path: 'app', element: <DashboardApp /> },
         { path: 'user', element: <User /> },
         { path: 'products', element: <Products /> },
-        { path: 'blog', element: <Blog /> }
+        { path: 'blog', element: <Blog /> },
+        { path: 'application-health-check', element: <ApplicationHealthCheck /> }
       ]
     },
     {
