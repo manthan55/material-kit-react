@@ -37,9 +37,9 @@ export default function Endpoints() {
               <TableRow>
                 <TableCell>Endpoint</TableCell>
                 <TableCell align="center">Status</TableCell>
-                <TableCell align="right">Response</TableCell>
-                <TableCell align="right">Status Code</TableCell>
-                <TableCell align="right">Expected Status Code</TableCell>
+                <TableCell>Response</TableCell>
+                <TableCell>Status Code</TableCell>
+                <TableCell>Expected Status Code</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -62,9 +62,9 @@ export default function Endpoints() {
                       </SvgIcon>
                     )}
                   </TableCell>
-                  <TableCell align="right">{row.response}</TableCell>
-                  <TableCell align="right">{row.statusCode}</TableCell>
-                  <TableCell align="right">{row.expectedStatusCode}</TableCell>
+                  <TableCell>{row.response}</TableCell>
+                  <TableCell>{row.statusCode}</TableCell>
+                  <TableCell>{row.expectedStatusCode}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
