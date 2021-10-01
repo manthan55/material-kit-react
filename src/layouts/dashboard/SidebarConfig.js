@@ -23,6 +23,11 @@ const sidebarConfig = [
     icon: getIcon(peopleFill)
   },
   {
+    title: 'Azure Kubernetes Service',
+    path: '/dashboard/azure-kubernetes-service',
+    icon: getIcon(peopleFill)
+  },
+  {
     title: 'user',
     path: '/dashboard/user',
     icon: getIcon(peopleFill)
