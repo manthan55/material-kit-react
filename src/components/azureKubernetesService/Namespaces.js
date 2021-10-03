@@ -26,7 +26,7 @@ function getAKSClusters() {
   return clusters;
 }
 
-// Make API call to /getNamespaces endpoint with the clusterName as input & return the list of clusters
+// Make API call to /getNamespaces endpoint with the clusterName as input & return the list of namespaces
 function getAKSClusterNamespaces(clusterName) {
   const namespaces = ['default', 'system', 'kubedns', 'metrics'];
   return namespaces;
