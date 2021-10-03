@@ -1,8 +1,11 @@
 // material
 import { Grid, Container } from '@mui/material';
-// import { AppWeeklySales } from '../components/_dashboard/app';
+
+// icons
+import cloud from '@iconify/icons-ant-design/cloud';
+
 // components
-import Cluster from './Cluster';
+import ColorBox from '../common/ColorBox';
 
 // ----------------------------------------------------------------------
 
@@ -14,6 +17,13 @@ function getAKSClusters() {
 
 export default function Clusters(props) {
   const clusters = getAKSClusters();
+
+  // Make API call to /aks/getNamespaces endpoint & return the count of namespaces
+  const getNamepaceCountOfCluster = (clusterName) => {
+    const namespaceCount = 5;
+
+    return `${namespaceCount} Namespace(s)`;
+  };
 
   return (
     <Container maxWidth="xl">
@@ -29,7 +39,7 @@ export default function Clusters(props) {
               props.onClusterSelect(cluster);
             }}
           >
-            <Cluster title={cluster} />
+            <ColorBox title={cluster} icon={cloud} subtitle={getNamepaceCountOfCluster(cluster)} />
           </Grid>
         ))}
       </Grid>
