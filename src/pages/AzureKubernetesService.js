@@ -6,7 +6,6 @@ import { useState } from 'react';
 import Namespaces from '../components/azureKubernetesService/Namespaces';
 import Clusters from '../components/azureKubernetesService/Clusters';
 import Page from '../components/Page';
-import Cluster from '../components/azureKubernetesService/Cluster';
 
 // ----------------------------------------------------------------------
 
