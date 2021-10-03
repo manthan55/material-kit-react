@@ -13,7 +13,13 @@ import Cluster from '../components/azureKubernetesService/Cluster';
 export default function AzureKubernetesService() {
   // Tab handling vars & methods
   const tabNames = ['Clusters', 'Namespaces', 'Pods'];
-  const [currentTab, setCurrentTab] = useState(tabNames[1]);
+  const [currentTab, setCurrentTab] = useState(tabNames[0]);
+  const [selectedCluster, setSelectedCluster] = useState(null);
+
+  const onClusterSelect = (clusterName) => {
+    setSelectedCluster(clusterName);
+    setCurrentTab(tabNames[1]);
+  };
 
   return (
     <Page title="Azure Kubernetes Service">
@@ -38,14 +44,14 @@ export default function AzureKubernetesService() {
           {currentTab === 'Clusters' ? (
             <>
               <Grid item xs={12} sm={12} md={12}>
-                <Clusters />
+                <Clusters onClusterSelect={onClusterSelect} />
               </Grid>
             </>
           ) : null}
           {currentTab === 'Namespaces' ? (
             <>
               <Grid item xs={12} sm={12} md={12}>
-                <Namespaces />
+                <Namespaces selectedCluster={selectedCluster} />
               </Grid>
             </>
           ) : null}

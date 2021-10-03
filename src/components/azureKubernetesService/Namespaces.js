@@ -9,7 +9,7 @@ import {
   FormControl,
   InputLabel
 } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import { AppWeeklySales } from '../components/_dashboard/app';
 // components
 import Cluster from './Cluster';
@@ -28,11 +28,18 @@ function getAKSClusterNamespaces(clusterName) {
   return namespaces;
 }
 
-export default function Namespaces() {
+export default function Namespaces(props) {
   const clusters = getAKSClusters();
 
   const [cluster, setCluster] = useState('--SELECT--');
   const [namespaces, setNamespaces] = useState(null);
+
+  useEffect(() => {
+    if (props.selectedCluster !== null) {
+      setCluster(props.selectedCluster);
+      setNamespaces(getAKSClusterNamespaces(props.selectedCluster));
+    }
+  }, []);
 
   const handleClusterSelect = (event) => {
     setCluster(event.target.value);
@@ -65,6 +72,7 @@ export default function Namespaces() {
         </div>
       ) : null}
       {namespaces !== null && namespaces.map((namespace) => <p>{namespace}</p>)}
+      {/* {namespaces !== null && console.log(namespaces)} */}
     </Container>
   );
 }

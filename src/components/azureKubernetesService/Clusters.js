@@ -12,14 +12,23 @@ function getAKSClusters() {
   return clusters;
 }
 
-export default function Clusters() {
+export default function Clusters(props) {
   const clusters = getAKSClusters();
 
   return (
     <Container maxWidth="xl">
       <Grid container spacing={3}>
         {clusters.map((cluster) => (
-          <Grid key={cluster} item xs={12} sm={6} md={3}>
+          <Grid
+            key={cluster}
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            onClick={() => {
+              props.onClusterSelect(cluster);
+            }}
+          >
             <Cluster title={cluster} />
           </Grid>
         ))}
