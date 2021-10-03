@@ -13,17 +13,17 @@ import { SvgIcon, Card, CardHeader, Box } from '@mui/material';
 import checkmarkCircleFill from '@iconify/icons-eva/checkmark-circle-2-fill';
 import alertCircleFill from '@iconify/icons-eva/alert-circle-fill';
 
-function createData(endpoint, status, response, statusCode, expectedStatusCode) {
-  return { endpoint, status, response, statusCode, expectedStatusCode };
+function createData(endpoint, status, response, statusCode, expectedStatusCode, email) {
+  return { endpoint, status, response, statusCode, expectedStatusCode, email };
 }
 
 const rows = [
   // Status
   // true = Running
   // false = Error
-  createData('http://google.com', true, 'some response string', 201, 201),
-  createData('http://youtube.com', false, 'some response string', 500, 201),
-  createData('http://facebook.com', true, 'some response string', 200, 200)
+  createData('http://google.com', true, 'some response string', 201, 201, 'team@app1.com'),
+  createData('http://youtube.com', false, 'some response string', 500, 201, 'team@app2.com'),
+  createData('http://facebook.com', true, 'some response string', 200, 200, 'team@app3.com')
 ];
 
 export default function Endpoints() {
@@ -40,6 +40,7 @@ export default function Endpoints() {
                 <TableCell>Response</TableCell>
                 <TableCell>Status Code</TableCell>
                 <TableCell>Expected Status Code</TableCell>
+                <TableCell>Email</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -65,6 +66,7 @@ export default function Endpoints() {
                   <TableCell>{row.response}</TableCell>
                   <TableCell>{row.statusCode}</TableCell>
                   <TableCell>{row.expectedStatusCode}</TableCell>
+                  <TableCell>{row.email}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
