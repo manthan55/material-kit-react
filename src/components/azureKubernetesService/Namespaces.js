@@ -71,7 +71,7 @@ export default function Namespaces(props) {
           <Alert severity="error">Please select a cluster to view the namespaces within it</Alert>
         </div>
       ) : null}
-      {namespaces !== null && namespaces.map((namespace) => <p>{namespace}</p>)}
+      {namespaces !== null && namespaces.map((namespace) => <p key={namespace}>{namespace}</p>)}
       {/* {namespaces !== null && console.log(namespaces)} */}
     </Container>
   );
