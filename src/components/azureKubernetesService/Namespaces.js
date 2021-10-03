@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 // material
 import {
   Grid,
@@ -9,10 +11,12 @@ import {
   FormControl,
   InputLabel
 } from '@mui/material';
-import { useState, useEffect } from 'react';
-// import { AppWeeklySales } from '../components/_dashboard/app';
+
+// icons
+import cloud from '@iconify/icons-ant-design/cloud';
+
 // components
-import Cluster from './Cluster';
+import ColorBox from '../common/ColorBox';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +28,7 @@ function getAKSClusters() {
 
 // Make API call to /getNamespaces endpoint with the clusterName as input & return the list of clusters
 function getAKSClusterNamespaces(clusterName) {
-  const namespaces = ['default', 'system', 'kubedns'];
+  const namespaces = ['default', 'system', 'kubedns', 'metrics'];
   return namespaces;
 }
 
@@ -44,6 +48,13 @@ export default function Namespaces(props) {
   const handleClusterSelect = (event) => {
     setCluster(event.target.value);
     setNamespaces(getAKSClusterNamespaces(event.target.value));
+  };
+
+  // Make API call to /aks/getPods endpoint & return the count of pods
+  const getPodCountOfNamespace = (namespace) => {
+    const podCount = 5;
+
+    return `${podCount} Pod(s)`;
   };
 
   return (
@@ -71,8 +82,27 @@ export default function Namespaces(props) {
           <Alert severity="error">Please select a cluster to view the namespaces within it</Alert>
         </div>
       ) : null}
-      {namespaces !== null && namespaces.map((namespace) => <p key={namespace}>{namespace}</p>)}
-      {/* {namespaces !== null && console.log(namespaces)} */}
+      <Grid style={{ marginTop: '10px' }} container spacing={3}>
+        {namespaces !== null &&
+          namespaces.map((namespace) => (
+            <Grid
+              key={namespace}
+              item
+              xs={12}
+              sm={6}
+              md={3}
+              onClick={() => {
+                // props.onClusterSelect(cluster);
+              }}
+            >
+              <ColorBox
+                title={namespace}
+                icon={cloud}
+                subtitle={getPodCountOfNamespace(namespace)}
+              />
+            </Grid>
+          ))}
+      </Grid>
     </Container>
   );
 }
