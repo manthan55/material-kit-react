@@ -1,10 +1,8 @@
 import { Icon } from '@iconify/react';
-import cloud from '@iconify/icons-ant-design/cloud';
 // material
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../utils/formatNumber';
 
 // ----------------------------------------------------------------------
 
@@ -34,15 +32,25 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-const TOTAL = 714000;
+// ColorBox Component
+// Mandatory Props = title, icon
+// Optional Props = subtitle
+export default function ColorBox(props) {
+  if (props.title === undefined || props.icon === undefined) {
+    throw Error('Please provide all mandatory props');
+  }
 
-export default function Cluster(props) {
   return (
     <RootStyle>
       <IconWrapperStyle>
-        <Icon icon={cloud} width={24} height={24} />
+        <Icon icon={props.icon} width={24} height={24} />
       </IconWrapperStyle>
       <Typography variant="h3">{props.title}</Typography>
+      {props.subtitle !== undefined && (
+        <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+          {props.subtitle}
+        </Typography>
+      )}
     </RootStyle>
   );
 }
