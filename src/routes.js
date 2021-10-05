@@ -9,6 +9,7 @@ import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Products';
 import Blog from './pages/Blog';
 import ApplicationHealthCheck from './pages/ApplicationHealthCheck';
+import AddEditEndpoint from './pages/AddEditEndpoint';
 import AzureKubernetesService from './pages/AzureKubernetesService';
 import User from './pages/User';
 import NotFound from './pages/Page404';
@@ -27,6 +28,7 @@ export default function Router() {
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> },
         { path: 'application-health-check', element: <ApplicationHealthCheck /> },
+        { path: 'application-health-check/add-edit-endpoint', element: <AddEditEndpoint /> },
         { path: 'azure-kubernetes-service', element: <AzureKubernetesService /> }
       ]
     },
