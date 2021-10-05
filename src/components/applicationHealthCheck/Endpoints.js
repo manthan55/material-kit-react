@@ -6,10 +6,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import plusFill from '@iconify/icons-eva/plus-fill';
 
 // Icons
 import { Icon } from '@iconify/react';
-import { SvgIcon, Card, CardHeader, Box } from '@mui/material';
+import { SvgIcon, Card, Box, CardHeader, Stack, Button } from '@mui/material';
 import checkmarkCircleFill from '@iconify/icons-eva/checkmark-circle-2-fill';
 import alertCircleFill from '@iconify/icons-eva/alert-circle-fill';
 
@@ -29,7 +30,14 @@ const rows = [
 export default function Endpoints() {
   return (
     <Card>
-      <CardHeader title="Endpoints Status" />
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <CardHeader title="Endpoints Status" />
+        <Box sx={{ pr: 2, pt: 2, pb: 2 }}>
+          <Button variant="contained" to="#" startIcon={<Icon icon={plusFill} />}>
+            Add Endpoint
+          </Button>
+        </Box>
+      </Stack>
       <Box sx={{ p: 3, pb: 1 }} dir="ltr">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -53,7 +61,7 @@ export default function Endpoints() {
                     {row.endpoint}
                   </TableCell>
                   <TableCell align="center">
-                    {row.status ? (
+                    {row.active ? (
                       <SvgIcon sx={{ color: 'green' }}>
                         <Icon icon={checkmarkCircleFill} width={24} height={24} />
                       </SvgIcon>
