@@ -57,6 +57,10 @@
         "ignoreRestSiblings": false
       }
     ],
-    "prettier/prettier": "off"
+    "prettier/prettier": "off",
+    "no-plusplus": "off",
+    "camelcase": "off",
+    "no-else-return": "off",
+    "prefer-template": "off"
   }
 }
